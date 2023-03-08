@@ -1,12 +1,12 @@
-package com.anatoliiTelRan.enums;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums;
 
-public enum ClientStatus {
+public enum ProductStatus {
     ACTIVE(1),
     PENDING(2),
-    REMOVED(3),
-    BLOCKED(4);
+    REMOVED(3);
     private final int value;
-    ClientStatus(int value){
+
+    ProductStatus(int value) {
         this.value = value;
     }
 

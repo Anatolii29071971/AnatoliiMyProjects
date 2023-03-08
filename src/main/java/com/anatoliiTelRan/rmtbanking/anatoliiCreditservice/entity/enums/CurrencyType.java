@@ -1,4 +1,4 @@
-package com.anatoliiTelRan.enums;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums;
 
 public enum CurrencyType {
     EUR(1),

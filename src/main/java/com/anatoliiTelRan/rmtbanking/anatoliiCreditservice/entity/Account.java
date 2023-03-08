@@ -1,4 +1,4 @@
-package com.anatoliiTelRan.entity;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
