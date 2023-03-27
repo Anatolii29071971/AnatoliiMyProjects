@@ -29,7 +29,7 @@
         <jsonvebtoken.version>0.9.1</jsonvebtoken.version>
         <jackson-databind.version>2.13.2.2</jackson-databind.version>
         <spring-rabbitmq-tuning-lib.version>0.1.2</spring-rabbitmq-tuning-lib.version>
-        <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
         <springdoc-openapi.version>1.6.9</springdoc-openapi.version>
         <swagger.version>2.2.0</swagger.version>
         <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
@@ -98,6 +98,7 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+
 
         <dependency>
             <groupId>org.hibernate</groupId>
