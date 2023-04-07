@@ -8,7 +8,6 @@ import lombok.ToString;
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -16,30 +15,28 @@ import java.util.UUID;
 @ToString
 @Table(name = "manager")
 public class Manager {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "id", nullable = false)
-    private UUID id;
 
-    @Basic
+    @Id
+    @Column(name = "id",unique = true, nullable = false)
+    private Integer id;
+
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
-    @Basic
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
-    @Basic
-    @Column(name = "status", nullable = false)
-    private byte status;
 
-    @Basic
+    @Column(name = "status", nullable = false)
+    private Integer status;
+
+    @Column(name = "description",length = 225)
+    private String description;
+
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
-    @Basic
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
     private Set<Client> clients = new HashSet<>();

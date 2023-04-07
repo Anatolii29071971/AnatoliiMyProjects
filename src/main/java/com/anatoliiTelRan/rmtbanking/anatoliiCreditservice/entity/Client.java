@@ -6,10 +6,6 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -17,28 +13,28 @@ import java.util.UUID;
 @ToString
 @Table(name = "client")
 public class Client {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     @Id
-    @Column(name = "id", nullable = false)
-    private UUID id;
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "manager_id")
-    private Manager manager;
+    @Column(name = "manager_id", length = 16)
+    private short managerId;
 
-    @Basic
-    @Column(name = "status", nullable = false)
-    private byte status;
 
-    @Basic
+    @Column(name = "status", length = 1)
+    private Integer status;
+
+
     @Column(name = "tax_code", nullable = false, length = 20)
     private String taxCode;
+    @ManyToOne
+    @JoinColumn(name = "manager_id", nullable = true)
+    public Manager manager;
 
-    @Basic
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
-    @Basic
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
@@ -54,27 +50,13 @@ public class Client {
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
-    @Basic
+
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
-    @Basic
+
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-    private Set<Account> accountList = new HashSet<>();
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Client client = (Client) o;
-        return status == client.status && id.equals(client.id) && manager.equals(client.manager) && taxCode.equals(client.taxCode) && firstName.equals(client.firstName) && lastName.equals(client.lastName) && email.equals(client.email) && address.equals(client.address) && phone.equals(client.phone) && createdAt.equals(client.createdAt) && updatedAt.equals(client.updatedAt) && accountList.equals(client.accountList);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, manager, status, taxCode, firstName, lastName, email, address, phone, createdAt, updatedAt, accountList);
-    }
 }
