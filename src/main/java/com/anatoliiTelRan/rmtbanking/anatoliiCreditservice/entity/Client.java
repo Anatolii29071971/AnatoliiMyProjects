@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -15,6 +16,8 @@ import java.sql.Timestamp;
 public class Client {
 
     @Id
+    @GeneratedValue
+            //(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
@@ -28,9 +31,9 @@ public class Client {
 
     @Column(name = "tax_code", nullable = false, length = 20)
     private String taxCode;
-    @ManyToOne
-    @JoinColumn(name = "manager_id", nullable = true)
-    public Manager manager;
+   // @ManyToOne
+   // @JoinColumn(name = "manager_id", nullable = true)
+    //public Manager manager;
 
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
@@ -38,15 +41,15 @@ public class Client {
     @Column(name = "last_name", nullable = false, length = 50)
     private String lastName;
 
-    @Basic
+
     @Column(name = "email", nullable = false, length = 60)
     private String email;
 
-    @Basic
+
     @Column(name = "address", nullable = false, length = 80)
     private String address;
 
-    @Basic
+
     @Column(name = "phone", nullable = false, length = 20)
     private String phone;
 
@@ -57,6 +60,21 @@ public class Client {
 
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
+
+    public Client(short managerId, Integer status, String taxCode,
+                  String firstName, String lastName,
+                  String email, String address, String phone) {
+        this.managerId = managerId;
+        this.status = status;
+        this.taxCode = taxCode;
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.phone = phone;
+
+    }
 
 
 }

@@ -18,8 +18,8 @@ import java.util.UUID;
 @ToString
 @Table(name = "product")
 public class Product {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",unique = true, nullable = false)
     private Integer id;
 

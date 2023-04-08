@@ -17,6 +17,7 @@ import java.util.Set;
 public class Manager {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id",unique = true, nullable = false)
     private Integer id;
 
@@ -43,4 +44,16 @@ public class Manager {
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
     private Set<Product> products = new HashSet<>();
+
+    public Manager(String firstName, String lastName, Integer status,
+                   String description, Timestamp createdAt,
+                   Set<Client> clients, Set<Product> products) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.status = status;
+        this.description = description;
+        this.createdAt = createdAt;
+        this.clients = clients;
+        this.products = products;
+    }
 }

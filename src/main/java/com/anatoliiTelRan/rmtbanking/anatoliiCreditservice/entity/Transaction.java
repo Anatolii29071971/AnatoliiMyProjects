@@ -14,8 +14,8 @@ import java.sql.Timestamp;
 @ToString
 @Table(name = "transaction")
 public class Transaction {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, length = 16, nullable = false)
     private short id;
 
