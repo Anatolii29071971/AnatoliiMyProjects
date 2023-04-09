@@ -1,67 +1,67 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
 @ToString
-@Table(name = "client")
+@Table(name ="client")
 public class Client {
 
     @Id
-    @GeneratedValue
-            //(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id",unique = true,nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "manager_id", length = 16)
-    private short managerId;
+    @Column(name = "manager_id",nullable = false)
+    private Integer managerId;
 
 
-    @Column(name = "status", length = 1)
+    @Column(name = "status")
     private Integer status;
 
 
-    @Column(name = "tax_code", nullable = false, length = 20)
+    @Column(name = "tax_code",nullable = false)
     private String taxCode;
    // @ManyToOne
    // @JoinColumn(name = "manager_id", nullable = true)
     //public Manager manager;
 
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(name = "first_name",nullable = false)
     private String firstName;
 
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(name = "last_name",nullable = false)
     private String lastName;
 
 
-    @Column(name = "email", nullable = false, length = 60)
+    @Column(name = "email",nullable = false)
     private String email;
 
 
-    @Column(name = "address", nullable = false, length = 80)
+    @Column(name = "address",nullable = false)
     private String address;
 
 
-    @Column(name = "phone", nullable = false, length = 20)
+    @Column(name = "phone",nullable = false)
     private String phone;
 
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    public Client(short managerId, Integer status, String taxCode,
+    public Client(Integer managerId, Integer status, String taxCode,
                   String firstName, String lastName,
                   String email, String address, String phone) {
         this.managerId = managerId;
