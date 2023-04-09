@@ -8,6 +8,7 @@ import lombok.ToString;
 
 
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -31,9 +32,6 @@ public class Client {
 
     @Column(name = "tax_code",nullable = false)
     private String taxCode;
-   // @ManyToOne
-   // @JoinColumn(name = "manager_id", nullable = true)
-    //public Manager manager;
 
     @Column(name = "first_name",nullable = false)
     private String firstName;
@@ -67,14 +65,14 @@ public class Client {
         this.managerId = managerId;
         this.status = status;
         this.taxCode = taxCode;
-
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.address = address;
         this.phone = phone;
+        java.util.Date date = new Date();
+        this.createdAt = new Timestamp(date.getTime());
 
     }
-
 
 }
