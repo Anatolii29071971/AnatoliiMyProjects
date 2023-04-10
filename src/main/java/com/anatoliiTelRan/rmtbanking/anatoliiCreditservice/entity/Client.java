@@ -23,11 +23,11 @@ public class Client {
     private Integer id;
 
     @Column(name = "manager_id", nullable = false)
-    private Integer managerId;
+    private short managerId;
 
 
     @Column(name = "status")
-    private Integer status;
+    private byte status;
 
 
     @Column(name = "tax_code", nullable = false, unique = true, length = 20)
@@ -59,7 +59,7 @@ public class Client {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    public Client(Integer managerId, Integer status, String taxCode,
+    public Client(short managerId, byte status, String taxCode,
                   String firstName, String lastName,
                   String email, String address, String phone) {
         this.managerId = managerId;
