@@ -2,7 +2,7 @@ CREATE TABLE client (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     manager_id INTEGER,
     status INT(1),
-    tax_code VARCHAR(20),
+    tax_code VARCHAR(20) unique,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
     email VARCHAR(60),

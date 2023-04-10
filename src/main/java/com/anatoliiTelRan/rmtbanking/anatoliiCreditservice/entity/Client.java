@@ -30,7 +30,7 @@ public class Client {
     private Integer status;
 
 
-    @Column(name = "tax_code",nullable = false)
+    @Column(name = "tax_code",nullable = false,unique = true)
     private String taxCode;
 
     @Column(name = "first_name",nullable = false)
@@ -64,7 +64,7 @@ public class Client {
                   String email, String address, String phone) {
         this.managerId = managerId;
         this.status = status;
-        this.taxCode = taxCode;
+        this.taxCode = taxCode.toUpperCase();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
