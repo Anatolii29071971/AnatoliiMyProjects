@@ -1,13 +1,9 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice;
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.Client;
-import org.apache.juli.AsyncFileHandler;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
-import java.io.IOException;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 
 public class TestMyApp {
@@ -16,7 +12,7 @@ public class TestMyApp {
                 .addAnnotatedClass(Client.class)
                 .buildSessionFactory()) {
             Session session = factory.getCurrentSession();
-Client client = new Client(2,3,"ABB3","Vera","Vaskina","vaslona@gmail","Brandlberger Str.77","01548833");
+Client client = new Client(2,3,"bBB1","Vera","Vaskina","vaslona@gmail","Brandlberger Str.77","015488332");
 session.beginTransaction();
 session.save(client);
 session.getTransaction().commit();
