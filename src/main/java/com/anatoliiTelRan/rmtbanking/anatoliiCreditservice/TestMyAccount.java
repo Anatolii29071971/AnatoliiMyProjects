@@ -1,21 +1,25 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice;
 
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.Account;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.Client;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.math.BigDecimal;
 
-public class TestMyApp {
+
+public class TestMyAccount {
     public static void main(String[] args) {
         try (SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Client.class)
+                .addAnnotatedClass(Account.class)
                 .buildSessionFactory()) {
             Session session = factory.getCurrentSession();
-Client client = new Client((short) 2, (byte) 3,"bBB1","Vera","Vaskina","vaslona@gmail","Brandlberger Str.77","015488332");
-session.beginTransaction();
-session.save(client);
-session.getTransaction().commit();
+            Account account = new Account("BBB3",
+                    "vera1", (short) 1, (short) 2, new BigDecimal(10000.00), (short) 21);
+            session.beginTransaction();
+            session.save(account);
+            session.getTransaction().commit();
             System.out.println("ok");
             session.close();
         }

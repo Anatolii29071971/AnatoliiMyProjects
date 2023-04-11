@@ -27,7 +27,7 @@ public class Client {
 
 
     @Column(name = "status")
-    private byte status;
+    private short status;
 
 
     @Column(name = "tax_code", nullable = false, unique = true, length = 20)
@@ -59,11 +59,15 @@ public class Client {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
-    public Client(short managerId, byte status, String taxCode,
+    public Client(short managerId, short status, String taxCode,
                   String firstName, String lastName,
                   String email, String address, String phone) {
         this.managerId = managerId;
-        this.status = status;
+        if (status <= 125 && status > -125) {
+            this.status = status;
+        } else {
+            this.status = -125;
+        }
         this.taxCode = taxCode.toUpperCase();
         this.firstName = firstName;
         this.lastName = lastName;
