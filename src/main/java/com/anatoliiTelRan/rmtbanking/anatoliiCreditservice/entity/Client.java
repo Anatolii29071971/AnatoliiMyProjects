@@ -9,6 +9,8 @@ import lombok.ToString;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -59,6 +61,12 @@ public class Client {
     @Column(name = "updated_at")
     private Timestamp updatedAt;
 
+
+
+   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
+   @ToString.Exclude
+    private Set<Account> accountSet ;
+*/
     public Client(short managerId, short status, String taxCode,
                   String firstName, String lastName,
                   String email, String address, String phone) {
@@ -78,5 +86,6 @@ public class Client {
         this.createdAt = new Timestamp(date.getTime());
 
     }
+
 
 }

@@ -12,7 +12,7 @@ public class TestMyClient {
                 .addAnnotatedClass(Client.class)
                 .buildSessionFactory()) {
             Session session = factory.getCurrentSession();
-Client client = new Client((short) 2, (short) 100,"bBB3","Vera","Vaskina","vaslona@gmail","Brandlberger Str.77","015488332");
+Client client = new Client((short) 2, (short) 100,"bcB4","Vera","Vaskina","vaslona@gmail","Brandlberger Str.77","015488332");
 session.beginTransaction();
 session.save(client);
 session.getTransaction().commit();

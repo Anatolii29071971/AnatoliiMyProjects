@@ -20,7 +20,7 @@ CREATE TABLE account (
     type TINYINT CHECK (type BETWEEN - 125 AND 125),
     status TINYINT CHECK (status BETWEEN - 125 AND 125),
     balance NUMERIC(15 , 2 ),
-    currency_code INTEGER(2),
+    currency_code smallint,
     created_at TIMESTAMP,
     updated_at TIMESTAMP,
     foreign key (client_tax_code) references client ( tax_code)
@@ -43,27 +43,33 @@ CREATE TABLE agreement (
     account_id INTEGER,
     product_id INTEGER,
     interest_rate NUMERIC(6 , 4 ),
-    status tinyint check(status  between -125 and 125),
+    status TINYINT CHECK (status BETWEEN - 125 AND 125),
     sum NUMERIC(15 , 2 ),
     created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    updated_at TIMESTAMP,
+    FOREIGN KEY (account_id)
+        REFERENCES account (id),
+    FOREIGN KEY (product_id)
+        REFERENCES product (id)
 );
 
 CREATE TABLE transaction (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     debit_account INTEGER,
     credit_account INTEGER,
-    typ tinyint check(typ  between -125 and 125),
+    typ TINYINT CHECK (typ BETWEEN - 125 AND 125),
     amount NUMERIC(15 , 2 ),
     description VARCHAR(255),
-    created_at TIMESTAMP
+    created_at TIMESTAMP,
+    FOREIGN KEY (debit_account)
+        REFERENCES account (id)
 );
 
 CREATE TABLE manager (
-    id smallint AUTO_INCREMENT PRIMARY KEY,
+    id SMALLINT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50),
-    status tinyint check(status  between -125 and 125),
+    status TINYINT CHECK (status BETWEEN - 125 AND 125),
     description VARCHAR(255),
     created_at TIMESTAMP
 );

@@ -6,6 +6,8 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,11 +23,11 @@ public class Account {
     @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    /*
-    @ManyToOne(cascade = CascadeType.ALL)
 
-    @JoinColumn(name = "tax_code", nullable = false)
-    private Client clientTaxCode;
+   /*
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "tax_code")
+    private Client clientTCode;
 */
 
     @Column(name = " client_tax_code", nullable = false, unique = true, length = 20)
@@ -56,9 +58,12 @@ public class Account {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
+
+
+
     public Account(String clientTaxCode, String accountName, short type,
                    short status, BigDecimal balance, short currencyCode) {
-        this.clientTaxCode = clientTaxCode;
+        this.clientTaxCode = clientTaxCode.toUpperCase();
         this.accountName = accountName;
         if (type <= 125 && type > -125) {
             this.type = type;

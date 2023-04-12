@@ -31,7 +31,7 @@ public class Agreement {
 
 
     @Column(name = "status", nullable = false)
-    private Integer status;
+    private short status;
 
 
     @Column(name = "sum", nullable = false, precision = 2)

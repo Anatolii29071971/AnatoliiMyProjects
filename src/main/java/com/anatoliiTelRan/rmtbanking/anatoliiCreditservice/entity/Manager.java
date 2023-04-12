@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,7 +30,7 @@ public class Manager {
 
 
     @Column(name = "status", nullable = false)
-    private Integer status;
+    private short status;
 
     @Column(name = "description",length = 225)
     private String description;
@@ -45,14 +46,19 @@ public class Manager {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
     private Set<Product> products = new HashSet<>();
 
-    public Manager(String firstName, String lastName, Integer status,
-                   String description, Timestamp createdAt,
+    public Manager(String firstName, String lastName, short status,
+                   String description,
                    Set<Client> clients, Set<Product> products) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.status = status;
+        if (status <= 125 && status > -125) {
+            this.status = status;
+        } else {
+            this.status = -125;
+        }
         this.description = description;
-        this.createdAt = createdAt;
+        java.util.Date date = new Date();
+        this.createdAt = new Timestamp(date.getTime());
         this.clients = clients;
         this.products = products;
     }

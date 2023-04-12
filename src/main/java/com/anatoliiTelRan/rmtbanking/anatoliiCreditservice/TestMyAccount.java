@@ -15,7 +15,7 @@ public class TestMyAccount {
                 .addAnnotatedClass(Account.class)
                 .buildSessionFactory()) {
             Session session = factory.getCurrentSession();
-            Account account = new Account("BBB3",
+            Account account = new Account("bcb4",
                     "vera1", (short) 1, (short) 2, new BigDecimal(10000.00), (short) 21);
             session.beginTransaction();
             session.save(account);
