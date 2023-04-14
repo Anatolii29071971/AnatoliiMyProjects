@@ -32,7 +32,7 @@ CREATE TABLE product (
     product_name VARCHAR(70),
     status tinyint check(status  between -125 and 125),
     currency_code smallint,
-    interest_rate NUMERIC(6 , 4 ),
+    interest_rate NUMERIC(12 , 4 ),
     limit_credit NUMERIC(15 , 2 ),
     created_at TIMESTAMP,
     updated_at TIMESTAMP
@@ -42,7 +42,7 @@ CREATE TABLE agreement (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     account_id INTEGER,
     product_id INTEGER,
-    interest_rate NUMERIC(6 , 4 ),
+    interest_rate NUMERIC(12 , 4 ),
     status TINYINT CHECK (status BETWEEN - 125 AND 125),
     sum NUMERIC(15 , 2 ),
     created_at TIMESTAMP,

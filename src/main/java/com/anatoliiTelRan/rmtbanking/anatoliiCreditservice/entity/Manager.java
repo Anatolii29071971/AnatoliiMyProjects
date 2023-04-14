@@ -38,7 +38,7 @@ public class Manager {
     @Column(name = "created_at", nullable = false)
     private Timestamp createdAt;
 
-
+/*
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
     private Set<Client> clients = new HashSet<>();
@@ -61,5 +61,26 @@ public class Manager {
         this.createdAt = new Timestamp(date.getTime());
         this.clients = clients;
         this.products = products;
+    }
+
+
+ */
+    public Manager(String firstName, String lastName, short status,
+                   String description) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        if (status <= 125 && status > -125) {
+            this.status = status;
+        } else {
+            this.status = -125;
+        }
+        this.description = description;
+        java.util.Date date = new Date();
+        this.createdAt = new Timestamp(date.getTime());
+
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

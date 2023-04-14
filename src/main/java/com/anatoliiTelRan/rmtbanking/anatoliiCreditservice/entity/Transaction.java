@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, length = 16, nullable = false)
+    @Column(name = "id", unique = true,  nullable = false)
     private short id;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -28,8 +28,8 @@ public class Transaction {
     private Account creditAccount;
 
 
-    @Column(name = "type", length = 1, nullable = false)
-    private Integer type;
+    @Column(name = "type",  nullable = false)
+    private short type;
 
 
     @Column(name = "amount", nullable = false, precision = 2)

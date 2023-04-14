@@ -7,10 +7,7 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Getter
@@ -20,23 +17,24 @@ import java.util.UUID;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",unique = true, nullable = false)
+    @Column(name = "id", unique = true, nullable = false)
     private Integer id;
 
-    @ManyToOne
+    /* @ManyToOne
+     @Column(name = "manager_id")
+     private Manager manager;
+ */
     @Column(name = "manager_id")
-    private Manager manager;
-
-
+    private short managerId;
     @Column(name = "name", nullable = false, length = 70)
     private String name;
 
 
-    @Column(name = "status",length = 1,nullable = false)
-    private Integer status;
+    @Column(name = "status", length = 1, nullable = false)
+    private short status;
 
 
-    @Column(name = "currency_code",length = 2,nullable = false)
+    @Column(name = "currency_code", length = 2, nullable = false)
     private Integer currencyCode;
 
 
@@ -55,5 +53,15 @@ public class Product {
     @Column(name = "updated_at", nullable = false)
     private Timestamp updatedAt;
 
-
+    public Product(short managerId, String name, short status, Integer currencyCode,
+                   BigDecimal interestRate, BigDecimal limit) {
+        this.managerId = managerId;
+        this.name = name;
+        this.status = status;
+        this.currencyCode = currencyCode;
+        this.interestRate=interestRate;
+        this.limit = limit;
+        java.util.Date date = new Date();
+        this.createdAt = new Timestamp(date.getTime());
+    }
 }
