@@ -1,6 +1,7 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
 
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.ClientStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,9 +9,8 @@ import lombok.ToString;
 
 
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Entity
 @Getter
@@ -20,72 +20,45 @@ import java.util.Set;
 public class Client {
 
     @Id
-    @Column(name = "id", unique = true, nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column(name = "manager_id", nullable = false)
-    private short managerId;
-
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
+    private UUID id;
     @Column(name = "status")
-    private short status;
-
-
-    @Column(name = "tax_code", nullable = false, unique = true, length = 20)
+    @Enumerated(EnumType.STRING)
+    private ClientStatus status;
+    @Column(name = "tax_code")
     private String taxCode;
-
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(name = "last_name")
     private String lastName;
-
-
-    @Column(name = "email", nullable = false, length = 60)
+    @Column(name = "email")
     private String email;
-
-
-    @Column(name = "address", nullable = false, length = 80)
+    @Column(name = "address")
     private String address;
-
-
-    @Column(name = "phone", nullable = false, length = 20)
+    @Column(name = "phone")
     private String phone;
-
-
     @Column(name = "created_at")
-    private Timestamp createdAt;
-
-
+    private LocalDateTime createdAt;
     @Column(name = "updated_at")
-    private Timestamp updatedAt;
+    private LocalDateTime updatedAt;
 
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private Set<Account> accounts;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "manager_id", referencedColumnName="id")
+    private Manager manager;
 
-
-   /* @OneToMany(cascade = CascadeType.ALL, mappedBy = "client")
-   @ToString.Exclude
-    private Set<Account> accountSet ;
-*/
-    public Client(short managerId, short status, String taxCode,
-                  String firstName, String lastName,
-                  String email, String address, String phone) {
-        this.managerId = managerId;
-        if (status <= 125 && status > -125) {
-            this.status = status;
-        } else {
-            this.status = -125;
-        }
-        this.taxCode = taxCode.toUpperCase();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.address = address;
-        this.phone = phone;
-        java.util.Date date = new Date();
-        this.createdAt = new Timestamp(date.getTime());
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Client)) return false;
+        Client client = (Client) o;
+        return taxCode.equals(client.taxCode);
     }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(taxCode);
+    }
 }

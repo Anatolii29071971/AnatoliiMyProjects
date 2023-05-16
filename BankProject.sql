@@ -1,4 +1,4 @@
-CREATE TABLE client (
+CREATE TABLE if not exists client (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     manager_id smallint,
     status tinyint check(status  between -125 and 125),
@@ -13,7 +13,7 @@ CREATE TABLE client (
 );
 
 
-CREATE TABLE account (
+CREATE TABLE if not exists  account (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     client_tax_code VARCHAR(20),
     account_name VARCHAR(100),
@@ -26,7 +26,7 @@ CREATE TABLE account (
     foreign key (client_tax_code) references client ( tax_code)
 );
 
-CREATE TABLE product (
+CREATE TABLE if not exists  product (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     manager_id smallint,
     product_name VARCHAR(70),
@@ -38,7 +38,7 @@ CREATE TABLE product (
     updated_at TIMESTAMP
 );
 
-CREATE TABLE agreement (
+CREATE TABLE if not exists  agreement (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     account_id INTEGER,
     product_id INTEGER,
@@ -53,7 +53,7 @@ CREATE TABLE agreement (
         REFERENCES product (id)
 );
 
-CREATE TABLE transaction (
+CREATE TABLE if not exists  transaction (
     id INTEGER AUTO_INCREMENT PRIMARY KEY,
     debit_account INTEGER,
     credit_account INTEGER,
@@ -65,7 +65,7 @@ CREATE TABLE transaction (
         REFERENCES account (id)
 );
 
-CREATE TABLE manager (
+CREATE TABLE IF NOT EXISTS manager (
     id SMALLINT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50),
     last_name VARCHAR(50),

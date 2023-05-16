@@ -1,13 +1,16 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.ManagerStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -19,68 +22,38 @@ public class Manager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id",unique = true, nullable = false)
-    private Integer id;
-
-    @Column(name = "first_name", nullable = false, length = 50)
+    @Column(name = "id")
+    private long id;
+    @Column(name = "first_name")
     private String firstName;
-
-    @Column(name = "last_name", nullable = false, length = 50)
+    @Column(name = "last_name")
     private String lastName;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private ManagerStatus status;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
+    @ManyToMany(cascade = CascadeType.PERSIST)
+    @JoinTable(name = "products_managers",
+            joinColumns = {@JoinColumn(name = "manager_id")},
+            inverseJoinColumns = {@JoinColumn(name = "product_id")})
+    private Set<Product> products;
+    @OneToMany(mappedBy = "manager", cascade = CascadeType.PERSIST)
+    private Set<Client> clients;
 
-    @Column(name = "status", nullable = false)
-    private short status;
-
-    @Column(name = "description",length = 225)
-    private String description;
-
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
-
-/*
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
-    private Set<Client> clients = new HashSet<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manager")
-    private Set<Product> products = new HashSet<>();
-
-    public Manager(String firstName, String lastName, short status,
-                   String description,
-                   Set<Client> clients, Set<Product> products) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        if (status <= 125 && status > -125) {
-            this.status = status;
-        } else {
-            this.status = -125;
-        }
-        this.description = description;
-        java.util.Date date = new Date();
-        this.createdAt = new Timestamp(date.getTime());
-        this.clients = clients;
-        this.products = products;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Manager)) return false;
+        Manager manager = (Manager) o;
+        return firstName.equals(manager.firstName) && lastName.equals(manager.lastName) && clients.equals(manager.clients);
     }
 
-
- */
-    public Manager(String firstName, String lastName, short status,
-                   String description) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        if (status <= 125 && status > -125) {
-            this.status = status;
-        } else {
-            this.status = -125;
-        }
-        this.description = description;
-        java.util.Date date = new Date();
-        this.createdAt = new Timestamp(date.getTime());
-
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, clients);
     }
 }

@@ -1,5 +1,6 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +8,9 @@ import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -15,33 +19,37 @@ import java.sql.Timestamp;
 @Table(name = "transaction")
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true,  nullable = false)
-    private short id;
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
+    @Column(name = "id")
+    private UUID id;
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
+    private TransactionType type;
+    @Column(name = "amount")
+    private double amount;
+    @Column(name = "description")
+    private String description;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "debit_account_id", nullable = false)
-    private Account debitAccountId;
-
+    @JoinColumn(name = "debit_account_id", referencedColumnName="id")
+    private Account debitAccount;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "credit_account_id", nullable = false)
+    @JoinColumn(name = "credit_account_id", referencedColumnName="id")
     private Account creditAccount;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaction that = (Transaction) o;
+        return Double.compare(that.amount, amount) == 0 && Objects.equals(createdAt, that.createdAt) && Objects.equals(debitAccount, that.debitAccount) && Objects.equals(creditAccount, that.creditAccount);
+    }
 
-    @Column(name = "type",  nullable = false)
-    private short type;
-
-
-    @Column(name = "amount", nullable = false, precision = 2)
-    private BigDecimal amount;
-
-
-    @Column(name = "description", nullable = false, length = 250)
-    private String description;
-
-
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(amount, createdAt, debitAccount, creditAccount);
+    }
 
 }

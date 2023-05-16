@@ -1,49 +1,53 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.AccountProductStatus;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "agreement")
+@Table(name = "agreements")
 public class Agreement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    @Column(name = "id")
+    private int id;
+    @Column(name = "interest_rate")
+    private float interestRate;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private AccountProductStatus status;
+    @Column(name = "sum")
+    private double sum;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "account_id")
-    private Account accountId;
+    @ManyToOne()
+    @JoinColumn(name = "account_id", referencedColumnName="id")
+    private Account account;
+    @ManyToOne()
+    @JoinColumn(name = "product_id", referencedColumnName="id")
+    private Product product;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id", nullable = false)
-    private Product productId;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Agreement agreement = (Agreement) o;
+        return Objects.equals(account, agreement.account) && Objects.equals(product, agreement.product);
+    }
 
-
-    @Column(name = "interest_rate", nullable = false, precision = 4)
-    private BigDecimal interestRate;
-
-
-    @Column(name = "status", nullable = false)
-    private short status;
-
-
-    @Column(name = "sum", nullable = false, precision = 2)
-    private BigDecimal sum;
-
-
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
-
-
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt;
-
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(account, product);
+    }
 }

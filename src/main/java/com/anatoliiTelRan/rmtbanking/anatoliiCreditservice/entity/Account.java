@@ -1,13 +1,15 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.AccountStatus;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.AccountType;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.CurrencyType;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Getter
 @Setter
@@ -19,69 +21,47 @@ import java.util.Set;
 @Table(name = "account")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", unique = true, nullable = false)
-    private Integer id;
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
 
-
-   /*
+    @Column(name = "id")
+    private UUID id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "type")
+    @Enumerated(EnumType.STRING)
+    private AccountType type;
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private AccountStatus status;
+    @Column(name = "balance")
+    private double balance;
+    @Column(name = "currency_code")
+    @Enumerated(EnumType.STRING)
+    private CurrencyType currencyCode;
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "tax_code")
-    private Client clientTCode;
-*/
+    @JoinColumn(name = "client_id", referencedColumnName="id")
+    private Client client;
+    @OneToMany(mappedBy = "debitAccount", cascade = CascadeType.ALL)
+    private Set<Transaction> transactionDebits;
+    @OneToMany(mappedBy = "creditAccount", cascade = CascadeType.ALL)
+    private Set<Transaction> transactionCredits;
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    private Set<Agreement> agreements;
 
-    @Column(name = " client_tax_code", nullable = false, unique = true, length = 20)
-    private String clientTaxCode;
-
-
-    @Column(name = "account_name", nullable = false, length = 100)
-    private String accountName;
-
-    @Column(name = "type", nullable = false)
-    private short type;
-
-    @Column(name = "status", nullable = false)
-    private short status;
-
-    @Column(name = "balance", nullable = false, precision = 2)
-    private BigDecimal balance;
-
-
-    @Column(name = "currency_code", nullable = false)
-    private short currencyCode;
-
-
-    @Column(name = "created_at", nullable = false)
-    private Timestamp createdAt;
-
-
-    @Column(name = "updated_at", nullable = false)
-    private Timestamp updatedAt;
-
-
-
-
-    public Account(String clientTaxCode, String accountName, short type,
-                   short status, BigDecimal balance, short currencyCode) {
-        this.clientTaxCode = clientTaxCode.toUpperCase();
-        this.accountName = accountName;
-        if (type <= 125 && type > -125) {
-            this.type = type;
-        } else {
-            this.type = -125;
-        }
-
-        if (status <= 125 && status > -125) {
-            this.status = status;
-        } else {
-            this.status = -125;
-        }
-
-        this.balance = balance;
-        this.currencyCode = currencyCode;
-
-        java.util.Date date = new Date();
-        this.createdAt = new Timestamp(date.getTime());
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Account account = (Account) o;
+        return Objects.equals(name, account.name);
     }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }
