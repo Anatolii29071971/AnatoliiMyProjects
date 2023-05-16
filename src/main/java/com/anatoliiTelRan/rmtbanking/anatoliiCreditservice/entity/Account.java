@@ -18,7 +18,7 @@ import java.util.*;
 @ToString
 @Entity
 
-@Table(name = "account")
+@Table(name = "accounts")
 public class Account {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)
@@ -49,7 +49,7 @@ public class Account {
     private Set<Transaction> transactionDebits;
     @OneToMany(mappedBy = "creditAccount", cascade = CascadeType.ALL)
     private Set<Transaction> transactionCredits;
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "accounts", cascade = CascadeType.ALL)
     private Set<Agreement> agreements;
 
     @Override

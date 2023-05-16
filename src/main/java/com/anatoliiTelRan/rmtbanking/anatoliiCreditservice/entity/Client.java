@@ -16,7 +16,7 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "client")
+@Table(name = "clients")
 public class Client {
 
     @Id
@@ -43,7 +43,7 @@ public class Client {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "clients", cascade = CascadeType.ALL)
     private Set<Account> accounts;
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "manager_id", referencedColumnName="id")

@@ -16,7 +16,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @ToString
-@Table(name = "transaction")
+@Table(name = "transactions")
 public class Transaction {
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.UUID)

@@ -15,6 +15,7 @@ ___
 | Column name | Type        | Description                                   |
 |-------------|-------------|-----------------------------------------------|
 | id          | UUID        | id key of row - unique, not null, primary key |
+| manager_id  | int         |                                               |
 | status      | byte        | client's status  -124 bis 125                 |
 | tax_code    | varchar(20) | client's TAX code (external ID)               |
 | first_name  | varchar(50) | client's name                                 |
@@ -32,7 +33,8 @@ ___
 | Column name   | Type          | Description                                   |
 |---------------|---------------|-----------------------------------------------|
 | id            | UUID          | id key of row - unique, not null, primary key | 
-| name          | varchar(100)  | a name of account                             |                              
+| client_id     | int           |                                               |  
+| name          | varchar(100)  | a name of account                             |  
 | type          | byte          | account type  -124 bis 125                    |                                   
 | status        | byte          | status of tne account    -124 bis 125         |                          
 | balance       | numeric(15,2) | balance of the account in currency.           | 

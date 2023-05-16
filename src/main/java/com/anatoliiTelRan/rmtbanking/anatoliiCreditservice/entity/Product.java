@@ -16,7 +16,7 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
-@Table(name = "product")
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class Product {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
     private Set<Agreement> agreement;
     @ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST)
     private Set<Manager> managers;
