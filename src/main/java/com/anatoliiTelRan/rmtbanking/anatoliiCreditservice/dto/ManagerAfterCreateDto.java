@@ -6,10 +6,13 @@ import lombok.Value;
 import java.time.LocalDateTime;
 
 @Value
-public class ManagerDto {
+public class ManagerAfterCreateDto {
     String id;
+
     String firstName;
+
     String lastName;
+
     String status;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

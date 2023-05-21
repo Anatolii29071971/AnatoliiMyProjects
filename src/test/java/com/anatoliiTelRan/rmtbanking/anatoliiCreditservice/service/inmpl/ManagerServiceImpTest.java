@@ -1,8 +1,6 @@
-package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.impl;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.inmpl;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class ManagerServiceImpTest {
 

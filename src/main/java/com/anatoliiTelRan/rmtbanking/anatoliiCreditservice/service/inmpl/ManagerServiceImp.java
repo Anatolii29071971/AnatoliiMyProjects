@@ -1,4 +1,4 @@
-package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.impl;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.inmpl;
 
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ManagerDto;
@@ -7,7 +7,6 @@ import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.mapper.ManagerMapper;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.repository.ManagerRepository;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.ManagerService;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ErrorMessage;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ManagerNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

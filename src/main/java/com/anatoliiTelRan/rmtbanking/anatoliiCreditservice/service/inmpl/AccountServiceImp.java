@@ -1,4 +1,4 @@
-package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.impl;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.inmpl;
 
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountDto;
@@ -7,7 +7,6 @@ import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.AccountS
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.mapper.AccountMapper;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.repository.AccountRepository;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.AccountService;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.AccountNotFoundException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ErrorMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
