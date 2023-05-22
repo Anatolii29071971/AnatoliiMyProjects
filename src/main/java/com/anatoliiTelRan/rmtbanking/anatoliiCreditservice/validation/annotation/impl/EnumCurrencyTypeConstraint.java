@@ -1,7 +1,8 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.impl;
 
-import com.example.bank_application.entity.enums.CurrencyType;
-import com.example.bank_application.validation.annotation.EnumCurrencyType;
+
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.CurrencyType;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.EnumCurrencyType;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet author="o.molchanova" id="insert test data into products table">
+    <changeSet author="a.bezbakh" id="insert test data into products table">
         <insert tableName="products">
             <column name="id"/>
             <column name="name" value="Current profitable"/>

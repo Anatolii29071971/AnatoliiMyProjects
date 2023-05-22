@@ -1,6 +1,7 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.impl;
 
-import com.example.bank_application.validation.annotation.Iban;
+
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.Iban;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

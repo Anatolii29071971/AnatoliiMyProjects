@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/managers")
 @RequiredArgsConstructor
@@ -21,7 +23,7 @@ public class ManagerController {
     }
     @GetMapping("/all/withClients")
     @ResponseStatus(HttpStatus.OK)
-    public ManagerListDto getAllManagers() {
+    public List<ManagerDto> getAllManagers() {
         return managerService.getAllManagersWithClients();
     }
 }

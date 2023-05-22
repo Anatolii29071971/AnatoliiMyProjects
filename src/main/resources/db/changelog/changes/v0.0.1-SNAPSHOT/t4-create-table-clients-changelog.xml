@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet id="create table clients" author="o.molchanova">
+    <changeSet id="create table clients" author="a.bezbakh">
         <preConditions onFail="CONTINUE" onFailMessage="Table clients already exists">
             <not>
                 <tableExists tableName="clients"/>

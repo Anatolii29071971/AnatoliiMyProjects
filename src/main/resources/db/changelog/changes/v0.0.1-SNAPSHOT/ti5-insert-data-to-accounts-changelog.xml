@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
-    <changeSet author="o.molchanova" id="insert test data into accounts table">
+    <changeSet author="a.bezbakh" id="insert test data into accounts table">
         <insert tableName="accounts">
             <column name="id" valueComputed="UUID_TO_BIN('5aef1d7f-d14f-4655-9399-25bf27b16588')"/>
             <column name="client_id" valueComputed="UUID_TO_BIN('1162af81-7d0e-417d-9ae7-2b16456ded68')"/>

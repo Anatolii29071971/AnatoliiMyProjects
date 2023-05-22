@@ -1,7 +1,8 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.impl;
 
-import com.example.bank_application.entity.enums.AccountType;
-import com.example.bank_application.validation.annotation.EnumAccountTypeOrNull;
+
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.AccountType;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.EnumAccountTypeOrNull;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
