@@ -3,7 +3,7 @@ package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.controller;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountAfterCreateDto;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountCreateDto;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountDto;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.AccountService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.AccountService;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataAlreadyExistException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataNotFoundException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ErrorMessage;
@@ -21,7 +21,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

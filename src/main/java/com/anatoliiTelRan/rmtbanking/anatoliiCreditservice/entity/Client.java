@@ -3,9 +3,7 @@ package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity;
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.ClientStatus;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 
 import java.sql.Timestamp;
@@ -15,6 +13,8 @@ import java.util.*;
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @ToString
 @Table(name = "clients")
 public class Client {

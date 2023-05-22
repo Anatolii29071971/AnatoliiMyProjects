@@ -7,7 +7,7 @@ import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ManagerDto;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.Manager;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.mapper.ManagerMapper;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.repository.ManagerRepository;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.ManagerService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.ManagerService;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataAlreadyExistException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataNotFoundException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ErrorMessage;

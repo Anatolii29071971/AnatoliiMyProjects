@@ -1,4 +1,4 @@
-package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf;
 
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ManagerAfterCreateDto;

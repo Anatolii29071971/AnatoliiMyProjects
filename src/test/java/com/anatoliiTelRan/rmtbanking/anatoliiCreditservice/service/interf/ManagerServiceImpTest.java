@@ -1,4 +1,4 @@
-package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.inmpl;
+package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf;
 
 import org.junit.jupiter.api.Test;
 

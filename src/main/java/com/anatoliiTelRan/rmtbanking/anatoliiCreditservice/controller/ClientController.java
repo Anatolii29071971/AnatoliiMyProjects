@@ -2,7 +2,7 @@ package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.controller;
 
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ClientWithBalanceListDto;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.ClientService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.ClientService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

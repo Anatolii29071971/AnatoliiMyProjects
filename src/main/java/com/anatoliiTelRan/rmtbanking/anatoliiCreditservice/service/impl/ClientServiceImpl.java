@@ -5,7 +5,7 @@ import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ClientWithBalance
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.Client;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.mapper.ClientMapper;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.repository.ClientRepository;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.ClientService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.ClientService;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataNotFoundException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ErrorMessage;
 import lombok.RequiredArgsConstructor;

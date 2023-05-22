@@ -9,7 +9,7 @@ import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.enums.AccountT
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.mapper.AccountMapper;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.repository.AccountRepository;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.repository.ClientRepository;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.AccountService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.AccountService;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataAlreadyExistException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.DataNotFoundException;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.exception.ErrorMessage;

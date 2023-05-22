@@ -4,10 +4,13 @@ package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.controller;
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountDto;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountsListDto;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.AccountService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.AccountService;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.EnumAccountStatusOrNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/accounts")
@@ -21,9 +24,9 @@ public class AccountController {
         return accountService.getAccountById(accountId);
     }
 
-    @GetMapping("/all/active")
+    @GetMapping("/all/{status}")
     @ResponseStatus(HttpStatus.OK)
-    public AccountsListDto getAllAccounts() {
-        return accountService.getAllAccountsByStatusActive();
+    public List<AccountDto> getAllAccounts(@EnumAccountStatusOrNull @PathVariable("status") String status) {
+        return accountService.getAllAccountsByStatus(status);
     }
 }
