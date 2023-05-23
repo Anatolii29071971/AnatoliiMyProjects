@@ -14,9 +14,10 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "manager")
+@Table(name = "managers")
 public class Manager {
 
     @Id

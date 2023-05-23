@@ -26,7 +26,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
+ @Slf4j
 //@AllArgsConstructor
 public class AccountServiceImpl implements AccountService {
     private final AccountMapper accountMapper;
@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
         log.info("Get account by id {}", id);
         return accountMapper.toDto(accountRepository.findAccountById(UUID.fromString(id)).orElseThrow(
                 () -> {
-                    log.warn(ErrorMessage.ACCOUNT_NOT_FOUND);
+                   log.warn(ErrorMessage.ACCOUNT_NOT_FOUND);
                     throw new DataNotFoundException(ErrorMessage.ACCOUNT_NOT_FOUND);
                 }));
     }
@@ -77,7 +77,7 @@ public class AccountServiceImpl implements AccountService {
         Account account;
 
         if (client == null) {
-            log.error(ErrorMessage.CLIENT_NOT_FOUND_BY_TAX_CODE);
+           log.error(ErrorMessage.CLIENT_NOT_FOUND_BY_TAX_CODE);
             throw new DataNotFoundException(ErrorMessage.CLIENT_NOT_FOUND_BY_TAX_CODE);
         } else if (accountRepository.findAccountByName(accountCreateDto.getName()) != null) {
             log.error(ErrorMessage.ACCOUNT_ALREADY_EXISTS);
