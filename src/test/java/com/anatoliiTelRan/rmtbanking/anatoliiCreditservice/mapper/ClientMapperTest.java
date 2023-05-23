@@ -1,10 +1,11 @@
 package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.mapper;
 
-import com.example.bank_application.dto.ClientDto;
-import com.example.bank_application.dto.ClientWithBalanceDto;
-import com.example.bank_application.entity.Client;
-import com.example.bank_application.util.DtoCreator;
-import com.example.bank_application.util.EntityCreator;
+
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ClientDto;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.ClientWithBalanceDto;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.entity.Client;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.util.DtoCreator;
+import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.util.EntityCreator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
