@@ -2,7 +2,6 @@ package com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.controller;
 
 
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountDto;
-import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.dto.AccountsListDto;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.service.interf.AccountService;
 import com.anatoliiTelRan.rmtbanking.anatoliiCreditservice.validation.annotation.EnumAccountStatusOrNull;
 import lombok.RequiredArgsConstructor;
