@@ -36,8 +36,8 @@
         <maven-surefire-plagin.version>3.0.0-M5</maven-surefire-plagin.version>
         <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-        <logback.version>1.2.3</logback.version>
-        <logstash-logback-encoder.version>4.9</logstash-logback-encoder.version>
+        <logback.version>1.4.5</logback.version>
+        <logstash-logback-encoder.version>7.2</logstash-logback-encoder.version>
     </properties>
 
     <dependencies>
