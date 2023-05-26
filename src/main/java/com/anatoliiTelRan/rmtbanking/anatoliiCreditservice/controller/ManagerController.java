@@ -20,6 +20,7 @@ public class ManagerController {
     public ManagerDto getManagerById(@PathVariable("managerId") String managerId) {
         return managerService.getManagerById(managerId);
     }
+
     @GetMapping("/all/withClients")
     @ResponseStatus(HttpStatus.OK)
     public List<ManagerDto> getAllManagers() {
