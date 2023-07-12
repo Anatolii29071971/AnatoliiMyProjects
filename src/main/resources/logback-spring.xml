@@ -13,10 +13,10 @@
     <!-- Local log file -->
     <appender name="FILE"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>slf4jlogback.log</file>
+        <file>slf4logback.log</file>
         <rollingPolicy
                 class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>slf4jlogback.%d{yyyy-MM-dd}.log
+            <fileNamePattern>slf4logback.%d{yyyy-MM-dd}.log
             </fileNamePattern>
             <maxHistory>10</maxHistory>
             <totalSizeCap>1GB</totalSizeCap>
