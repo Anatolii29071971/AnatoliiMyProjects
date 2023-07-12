@@ -1,14 +1,10 @@
 package com.anatoliitelran.rmtbanking.anatoliicreditservice.controller;
 
 
-import com.anatoliitelran.rmtbanking.anatoliicreditservice.dto.AccountDto;
 import com.anatoliitelran.rmtbanking.anatoliicreditservice.service.interf.AccountService;
-import com.anatoliitelran.rmtbanking.anatoliicreditservice.validation.annotation.EnumAccountStatusOrNull;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/accounts")
