@@ -27,7 +27,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
  @Slf4j
-//@AllArgsConstructor
+
 public class AccountServiceImpl implements AccountService {
     private final AccountMapper accountMapper;
     private final AccountRepository accountRepository;
@@ -114,7 +114,7 @@ public class AccountServiceImpl implements AccountService {
                 accountsByStatusAndProductId.add(account);
             }
         });
-        if (accountsByStatusAndProductId.size() == 0) {
+        if (accountsByStatusAndProductId.isEmpty()) {
             log.warn(ErrorMessage.ACCOUNTS_NOT_FOUND_BY_STATUS_AND_PRODUCT_ID);
             throw new DataNotFoundException(ErrorMessage.ACCOUNTS_NOT_FOUND_BY_STATUS_AND_PRODUCT_ID);
         }
