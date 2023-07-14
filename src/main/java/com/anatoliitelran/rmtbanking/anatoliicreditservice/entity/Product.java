@@ -37,7 +37,7 @@ public class Product {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private Set<Agreement> agreement;
     @ManyToMany(mappedBy = "products", cascade = CascadeType.PERSIST)
     private Set<Manager> managers;
